@@ -8,8 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Corporates\Constants\" />
-    <Folder Include="Features\Corporates\Models\" />
-    <Folder Include="Features\Corporates\Queries\" />
     <Folder Include="Features\Products\Commands\" />
     <Folder Include="Features\Products\Constants\" />
     <Folder Include="Features\Products\Models\" />

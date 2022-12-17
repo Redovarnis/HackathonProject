@@ -19,10 +19,10 @@ namespace Application.Features.Corporates.Rules
             IPaginate<Corporate> result = await _corporateRepository.GetListAsync(b => b.CorporateName == name);
             if (result.Items.Any()) throw new BusinessException("Corporate Name exists.");
         }
-        //public void CorporateShouldExistWhenRequested(Corporate corporate)
-        //{
-        //    if (corporate == null) throw new BusinessException("Requested Corporate does not exists.");
-        //}
+        public void CorporateShouldExistWhenRequested(Corporate corporate)
+        {
+            if (corporate == null) throw new BusinessException("Requested Corporate does not exists.");
+        }
 
     }
 }

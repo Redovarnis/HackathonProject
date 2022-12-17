@@ -9,7 +9,6 @@ namespace Persistence.Contexts
         protected IConfiguration Configuration { get; set; }
         public DbSet<Corporate> Corporates { get; set; }
 
-
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
             Configuration = configuration;
