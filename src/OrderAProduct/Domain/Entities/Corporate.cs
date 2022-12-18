@@ -8,13 +8,14 @@ namespace Domain.Entities
         public bool OrderState { get; set; }
         public DateTime StartOrderTime { get; set; }
         public DateTime EndOrderTime { get; set;}
+        public virtual ICollection<Product> Products { get; set; }
 
         public Corporate()
         {
 
         }
 
-        public Corporate(int id, string corporateName, bool orderState, DateTime startOrderTime, DateTime endOrderTime)
+        public Corporate(int id, string corporateName, bool orderState, DateTime startOrderTime, DateTime endOrderTime) : this()
         {
             Id = id;
             CorporateName = corporateName;

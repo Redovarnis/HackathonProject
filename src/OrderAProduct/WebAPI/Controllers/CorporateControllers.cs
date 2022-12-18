@@ -1,4 +1,6 @@
 ﻿using Application.Features.Corporates.Commands.CreateCorporate;
+using Application.Features.Corporates.Commands.RemoveCorporate;
+using Application.Features.Corporates.Commands.UpdateCorporate;
 using Application.Features.Corporates.Dtos;
 using Application.Features.Corporates.Models;
 using Application.Features.Corporates.Queries.GetByIdCorporate;
@@ -33,6 +35,20 @@ namespace WebAPI.Controllers
         {
             CorporateGetByIdDto corporateGetByIdDto = await Mediator.Send(getByIdCorporateQuery);
             return Ok(corporateGetByIdDto);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] RemoveCorporateCommand removeCorporateCommand)
+        {
+            RemovedCorporateDto result = await Mediator.Send(removeCorporateCommand);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateCorporateCommand updatedCorporateCommand)
+        {
+            UpdatedCorporateDto result = await Mediator.Send(updatedCorporateCommand);
+            return Ok(result);
         }
     }
 }

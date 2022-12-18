@@ -22,7 +22,8 @@ namespace Application.Features.Corporates.Rules
         public void CorporateShouldExistWhenRequested(Corporate corporate)
         {
             if (corporate == null) throw new BusinessException("Requested Corporate does not exists.");
-        }
 
+            //if (DateTime.Today.Hour >= corporate.StartOrderTime.Hour && DateTime.Today.Hour <= corporate.EndOrderTime.Hour)
+        }
     }
 }

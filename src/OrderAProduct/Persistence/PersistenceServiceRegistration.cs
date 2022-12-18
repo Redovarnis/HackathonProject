@@ -16,7 +16,8 @@ namespace Persistence
                 options.UseSqlServer(
                     configuration.GetConnectionString("HackathonProjectConnectionString")));
             services.AddScoped<ICorporateRepository, CorporateRepository>();
-            //services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             return services;
         }
     }

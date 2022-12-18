@@ -3,10 +3,12 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Application.Features.Corporates.Rules;
+using Application.Features.Products.Rules;
 using Core.Application.Pipelines.Authorization;
 using Core.Application.Pipelines.Caching;
 using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Validation;
+using Application.Features.Orders.Rules;
 
 namespace Application
 {
@@ -18,6 +20,8 @@ namespace Application
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddScoped<CorporateBusinessRules>();
+            services.AddScoped<ProductBusinessRules>();
+            services.AddScoped<OrderBusinessRules>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));

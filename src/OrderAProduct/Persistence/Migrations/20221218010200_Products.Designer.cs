@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Contexts;
 
@@ -11,9 +12,10 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    partial class BaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221218010200_Products")]
+    partial class Products
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,63 +81,6 @@ namespace Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Entities.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("Id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ClientName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ClientName");
-
-                    b.Property<int>("CorporateId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("OrderDate");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CorporateId");
-
-                    b.ToTable("Orders", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClientName = "Cihan Vural",
-                            CorporateId = 3,
-                            OrderDate = new DateTime(2022, 12, 18, 5, 19, 0, 492, DateTimeKind.Local).AddTicks(634),
-                            ProductId = 3
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ClientName = "Cihan Vural",
-                            CorporateId = 3,
-                            OrderDate = new DateTime(2022, 12, 18, 5, 19, 0, 492, DateTimeKind.Local).AddTicks(635),
-                            ProductId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ClientName = "Cihan Vural",
-                            CorporateId = 3,
-                            OrderDate = new DateTime(2022, 12, 18, 5, 19, 0, 492, DateTimeKind.Local).AddTicks(636),
-                            ProductId = 1
-                        });
-                });
-
             modelBuilder.Entity("Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -197,17 +142,6 @@ namespace Persistence.Migrations
                             Stock = 5,
                             UnitPrice = 40.0
                         });
-                });
-
-            modelBuilder.Entity("Domain.Entities.Order", b =>
-                {
-                    b.HasOne("Domain.Entities.Corporate", "Corporate")
-                        .WithMany()
-                        .HasForeignKey("CorporateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Corporate");
                 });
 
             modelBuilder.Entity("Domain.Entities.Product", b =>
